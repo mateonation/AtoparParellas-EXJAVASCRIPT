@@ -1,0 +1,77 @@
+*{
+    box-sizing:border-box;
+}
+html{
+    display:flex;
+    justify-content:center;
+}
+body{
+    margin:0;
+    padding:0px;
+    width:max-content;
+    height: max-content;
+    overflow:hidden;
+}
+.main-container{
+    display:flex;
+    flex-direction:column;
+    background-color:red;
+    padding:20px;
+    width:max-content;
+}
+.title{
+    background-color:green;
+}
+.game-container{
+    display:flex;
+    flex-direction:row;
+    background-color:aquamarine;
+    padding:20px;
+}
+.boxesandattempts-container{
+    background-color: yellow;
+    padding: 20px;
+}
+.boxes{
+    display:flex;
+    flex-flow:column;
+    flex-wrap:wrap;
+    height:50vh;
+    align-items:center;
+    justify-content: space-evenly;
+    background-color:blueviolet;
+    padding:20px;
+}
+.box{
+    width:125px;
+    height:125px;
+    margin:1rem;
+    position:relative;
+}
+.box div{
+    display:flex;
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    backface-visibility:hidden;
+    pointer-events:none;
+}
+.box .front{
+    background-color:white;
+    color:red;
+    font-size:12px;
+}
+.box .front{
+    background-color:black;
+}
+.attempts{
+    background-color: firebrick;
+    padding:20px;
+}
+.difficulty{
+    background-color: midnightblue;
+    padding:20px;
+}
