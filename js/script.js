@@ -1,7 +1,8 @@
 const total=12;
+var checking=false;
 let boxes=[];
-over=false;
 let selboxes=[];
+let selid=[];
 let e=0;
 
 // ID posíbel
@@ -28,31 +29,46 @@ for(let i=0;i<total;i++){
 }
 
 function selectbox(){
-    if(over){
+    if(checking){
         return;
     }
-    // Seleccionar caixa e poñerlle cor segundo o índice mesturado
+    // Ler caixa que foi clicada
     let selected=document.getElementById(this.id);
+    // Verificar se xa foi clicada previamente
     if(selected.classList!='box'){
         return;
     }
-        selected.classList.add(shuffled[this.id]);
+    selected.classList.add(shuffled[this.id]);
     // Engadilo a un array de caixas seleccionadas
-    selboxes[e]=selected.classList;
-    selboxes[e]=selboxes[e].toString();
+    selboxes[e]=selected.classList.item(1);
+    selid[e]=this.id;
     // Sumar un intento
     e++;
     if(e===2){
-        checkmatch();
+        // Se non son iguais
+        if(!checkMatch()){
+            setTimeout(()=>{
+                for(i=0;i<selboxes.length;i++){
+                    // Eliminar estilos da
+                    let undo=document.getElementById(selid[i]);
+                    undo.classList.remove(selboxes[i]);
+                    checking=false;
+                }
+            },1000);
+        // Se son iguais
+        }else{
+            checking=false;
+        }
         e=0;
+        return;
     }
 }
-function checkmatch(){
+// Se duas caixas xa foron clicadas verificar se hai unha parella
+function checkMatch(){
+    checking=true;
     if(selboxes[0]===selboxes[1]){
-        alert('iguais');
-        return;
+        return true;
     }else{
-        alert('distintos');
-        return;
+        return false;
     }
 }
