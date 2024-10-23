@@ -1,6 +1,8 @@
 const total=12;
 let boxes=[];
 over=false;
+let selected=[];
+let selid=0;
 
 // ID posíbel
 let abc=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -26,5 +28,13 @@ for(let i=0;i<total;i++){
 }
 
 function selectbox(){
-    
+    if(over){
+        return;
+    }
+    selected[selid]=this.id;
+    selid++;
+    if(selid===2){
+        selected[0]===selected[1]?alert('Iguais'):alert('Distintas');
+        selid=0;
+    }
 }
