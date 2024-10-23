@@ -33,7 +33,10 @@ function selectbox(){
     }
     // Seleccionar caixa e poñerlle cor segundo o índice mesturado
     let selected=document.getElementById(this.id);
-    selected.classList.add(shuffled[this.id]);
+    if(selected.classList!='box'){
+        return;
+    }
+        selected.classList.add(shuffled[this.id]);
     // Engadilo a un array de caixas seleccionadas
     selboxes[e]=selected.classList;
     selboxes[e]=selboxes[e].toString();
