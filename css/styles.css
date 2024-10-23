@@ -62,21 +62,21 @@ body{
     background-color:chartreuse;
     padding:20px;
 }
-#a{
+.a{
     background-color: red;
 }
-#b{
+.b{
     background-color: orange;
 }
-#c{
+.c{
     background-color: yellow;
 }
-#d{
+.d{
     background-color: greenyellow;
 }
-#e{
+.e{
     background-color: lightblue;
 }
-#f{
+.f{
     background-color: pink;
 }
