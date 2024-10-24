@@ -56,6 +56,15 @@ body{
 .difficulty{
     background-color:chartreuse;
     padding:20px;
+    div{
+        display:grid;
+        grid-template-columns:auto 60px;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+}
+input{
+    float:right;    
 }
 .a{
     background-color: red;
