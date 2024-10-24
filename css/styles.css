@@ -57,6 +57,7 @@ body{
 .attempts{
     background-color: firebrick;
     padding:20px;
+    white-space:pre-wrap;
 }
 .difficulty{
     background-color:chartreuse;
