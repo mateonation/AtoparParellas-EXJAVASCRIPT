@@ -9,6 +9,8 @@ let tofind;
 let abc=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 let index=[];
 let shuffled=[];
+let letter1st;
+let letter2nd;
 
 window.onload=function(){
     total=12;
@@ -27,9 +29,21 @@ window.onload=function(){
 
 // Xerador de caixas dentro do xogo
 function generateBoxes(){
+    letter1st=0;
+    letter2nd=0;
     // Engadir tantos ID ao índice coma sexa posíbel (ata a metade das caixas totais)
     for(let i=0;i<total/2;i++){
-        index[i]=[abc[i]];
+        // Se termiñan as letras do abecedario, comezar a introducir unha segunda letra
+        if(letter2nd>=abc.length){
+            letter1st++;
+            letter2nd=0;
+        }
+        if(i>=abc.length){
+            index[i]=[abc[letter1st]+abc[letter2nd]];
+            letter2nd++;
+        }else{
+            index[i]=[abc[i]];
+        }
     }
     // Repetir outra vez o índice dentro de si mesmo e mesturar os elementos nel
     index=[...index,...index];
