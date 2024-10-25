@@ -38,7 +38,7 @@ function generateBoxes(){
     for(let i=0;i<total;i++){
         let div=document.createElement('div');
         div.classList.add('box');
-        div.addEventListener('click',selectbox);
+        div.addEventListener('click',selectBox);
         div.id=i;
         boxes.push(div);
         document.querySelector('.boxes').append(boxes[i]);
@@ -56,7 +56,7 @@ function generateBoxes(){
 }
 
 // Cando se clica enriba dunha caixa
-function selectbox(){
+function selectBox(){
     if(checking){
         return;
     }
@@ -66,7 +66,9 @@ function selectbox(){
     if(selected.classList!='box'){
         return;
     }
+    // Marcar a caixa
     selected.classList.add(shuffled[this.id]);
+    selected.textContent=(shuffled[this.id]);
     // Engadilo a un array de caixas seleccionadas
     selboxes[e]=selected.classList.item(1);
     selid[e]=this.id;
@@ -80,6 +82,7 @@ function selectbox(){
                     // Desmarcar caixas 
                     let undo=document.getElementById(selid[i]);
                     undo.classList.remove(selboxes[i]);
+                    undo.textContent="";
                     checking=false;
                 }
             },1000);

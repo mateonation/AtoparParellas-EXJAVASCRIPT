@@ -44,10 +44,16 @@ body{
     margin:1rem;
     position:relative;
     background-color:white;
-    font-size:30px;
-    color:black;
     border: 4px solid blue;
     transition:0.5s;
+
+    /* FOR THE TEXT INSIDE THE BOX */
+    display: flex;
+    text-transform:uppercase;
+    font-size:90px;
+    color:black;
+    justify-content: center;
+    align-items: center;
 }
 .attempts{
     background-color: firebrick;
