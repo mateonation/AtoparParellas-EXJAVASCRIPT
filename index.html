@@ -26,13 +26,15 @@
                         <li>Medio</li>
                         <li>Difícil</li>
                     </ul>
-                    <div>
+                    <div id="slct">
                         <label for="rows-n">Filas:</label>
                         <input type="number" id="rows-n">
                         <label for="columns-n">Columnas:</label>
                         <input type="number" id="columns-n">
                     </div>
-                    <input type="button" value="Seleccionar" onclick="selectRC();">
+                    <button id="select-n" onclick="selectRC();">Seleccionar</button>
+                    <hr>
+                    <div id="state"></div>
                 </div>
             </div>
         </div>

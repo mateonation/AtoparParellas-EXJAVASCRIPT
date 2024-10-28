@@ -63,15 +63,20 @@ body{
 .difficulty{
     background-color:chartreuse;
     padding:20px;
-    div{
+    width:185px;
+    height:auto;
+    #slct{
         display:grid;
         grid-template-columns:auto 60px;
         gap: 10px;
         margin-bottom: 10px;
     }
+    hr{
+        margin-top: 40px;
+    }
 }
-input{
-    float:right;    
+#select-n{
+    float:right;
 }
 .a{
     background-color: red;
