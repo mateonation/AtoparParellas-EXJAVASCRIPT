@@ -16,6 +16,9 @@ var statVal;
 let totaln;
 let rowsn;
 let columnsn;
+let grad1;
+let grad2;
+let color0;
 
 window.onload=function(){
     total=12;
@@ -89,8 +92,22 @@ function selectBox(){
     selected.classList.add(shuffled[this.id]);
     selected.textContent=(shuffled[this.id]);
     for(i=0;i<total;i++){
+        // Colorear caixas de dúas letras
+        if(selected.textContent.length===2){
+            let position=selected.textContent.split(''); // ['A','B'];
+            if(position[0]===abc[i]){
+                grad1=colored[i];
+            }
+            if(position[1]===abc[i]){
+                grad2=colored[i];
+            }
+            if(grad1!==0 && grad2!==0){
+                selected.style.background='linear-gradient(45deg,'+grad1+','+grad2+')';
+            }
+        }
+        // Colorear para caixas dunha soa letra
         if(selected.textContent===abc[i]){
-            selected.style.backgroundColor=(colored[i]);
+            selected.style.background=(colored[i]);
         }
     }
     // Engadilo a un array de caixas seleccionadas
@@ -107,7 +124,14 @@ function selectBox(){
                     // Desmarcar caixas 
                     undo=document.getElementById(selid[i]);
                     undo.classList.remove(selboxes[i]);
-                    undo.style.backgroundColor=('white');
+                    // Se é de dúas letras
+                    if(undo.textContent.length===2){
+                        undo.style.background='linear-gradient(white,white)';
+                    // Se é de unha soa letra
+                    }else{
+                        undo.style.background='white';
+                    }
+                    // Eliminar letras das caixas
                     undo.textContent="";
                     checking=false;
                 }
