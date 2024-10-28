@@ -11,6 +11,10 @@ let index=[];
 let shuffled=[];
 let letter1st;
 let letter2nd;
+var statVal;
+let totaln;
+let rowsn;
+let columnsn;
 
 window.onload=function(){
     total=12;
@@ -126,11 +130,10 @@ function attext(){
 }
 // Cambiar o número de columnas e filas do xogo
 function selectRC(){
-    let rowsn=document.getElementById('rows-n').value;
-    let columnsn=document.getElementById('columns-n').value;
+    rowsn=document.getElementById('rows-n').value;
+    columnsn=document.getElementById('columns-n').value;
     // Obter o número provisional das caixas
-    let totaln=rowsn*columnsn;
-    alert(totaln)
+    totaln=rowsn*columnsn;
     // Se o total provisional é par + maior que 1 + numeros de columnas e filas positivos
     if(totaln%2===0 && totaln>1 && columnsn>0 && rowsn>0){
         // Desmarcar e borrar todas as caixas reveladas
@@ -149,11 +152,47 @@ function selectRC(){
         document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat('+columnsn+',auto)';
         document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat('+rowsn+',auto)';
         // Volver a xerar as caixas cos novos parámetros
+        statVal=true;
+        staText();
         generateBoxes();
         return;
     // Se é impar ou menor que 1 => amosar erro e non xerar    
     }else{
-        alert('erro')
+        statVal=false;
+        staText();
         return;
+    }
+}
+// Texto de verificación do número de filas e columnas
+function staText(){
+    let text=document.getElementById('state');
+    text.style.whiteSpace='pre-wrap';
+    if(statVal){
+        text.style.color='green';
+        text.textContent='Xerando '+total+' caixas';
+    }else{
+        text.style.color='red';
+        text.textContent='-';
+        if(columnsn<=0){
+            text.textContent+='columnas negativas ('+columnsn+')';
+        }
+        if(rowsn<=0){
+            if(text.textContent!='-'){
+                text.textContent+='\n-';
+            }
+            text.textContent+='filas negativas ('+rowsn+')';
+        }
+        if(totaln<=0){
+            if(text.textContent!='-'){
+                text.textContent+='\n-';
+            }
+            text.textContent+='caixas totais negativas ('+totaln+')';
+        }
+        if(totaln%2!==0){
+            if(text.textContent!='-'){
+                text.textContent+='\n-';
+            }
+            text.textContent+='caixas totais impares ('+totaln+')';
+        }
     }
 }
