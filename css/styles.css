@@ -55,6 +55,10 @@ body{
     justify-content: center;
     align-items: center;
 }
+.matched{
+    border: 4px solid #ffd000;
+    box-shadow:1px ;
+}
 .attempts{
     background-color: firebrick;
     padding:20px;

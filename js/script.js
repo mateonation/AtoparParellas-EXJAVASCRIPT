@@ -101,10 +101,11 @@ function selectBox(){
     if(e===2){
         // Se non son iguais
         if(!checkMatch()){
+            let undo;
             setTimeout(()=>{
                 for(i=0;i<selboxes.length;i++){
                     // Desmarcar caixas 
-                    let undo=document.getElementById(selid[i]);
+                    undo=document.getElementById(selid[i]);
                     undo.classList.remove(selboxes[i]);
                     undo.style.backgroundColor=('white');
                     undo.textContent="";
@@ -113,6 +114,10 @@ function selectBox(){
             },1000);
         // Se son iguais
         }else{
+            for(i=0;i<selboxes.length;i++){
+                undo=document.getElementById(selid[i]);
+                undo.classList.add('matched');
+            }
             tofind=tofind-1;
             checking=false;
         }
