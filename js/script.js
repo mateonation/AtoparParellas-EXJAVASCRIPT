@@ -167,32 +167,40 @@ function selectRC(){
 function staText(){
     let text=document.getElementById('state');
     text.style.whiteSpace='pre-wrap';
+    // Amosar texto de xeración boa
     if(statVal){
         text.style.color='green';
         text.textContent='Xerando '+total+' caixas';
+    // Amosar texto de xeración co erro    
     }else{
         text.style.color='red';
         text.textContent='-';
+        // Columnas a 0 ou negativas
         if(columnsn<=0){
             text.textContent+='columnas negativas ('+columnsn+')';
         }
+        // Filas a 0 ou negativas
         if(rowsn<=0){
             if(text.textContent!='-'){
                 text.textContent+='\n-';
             }
             text.textContent+='filas negativas ('+rowsn+')';
         }
-        if(totaln<=0){
+        // Caixas totais a 0, negativas ou impares
+        if(totaln<=0||totaln%2!==0){
             if(text.textContent!='-'){
                 text.textContent+='\n-';
             }
-            text.textContent+='caixas totais negativas ('+totaln+')';
-        }
-        if(totaln%2!==0){
-            if(text.textContent!='-'){
-                text.textContent+='\n-';
+            if(totaln<=0){
+                // Caixas totais negativas
+                text.textContent+='caixas totais negativas ('+totaln+')';
+            }else{
+                // Caixas totais impares
+                text.textContent+='caixas totais impares ('+totaln+')';
             }
-            text.textContent+='caixas totais impares ('+totaln+')';
         }
     }
+    setTimeout(()=>{
+        text.textContent='';
+    },2500)
 }
