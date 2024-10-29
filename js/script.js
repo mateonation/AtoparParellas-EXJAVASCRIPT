@@ -124,17 +124,10 @@ function selectBox(){
                     // Desmarcar caixas 
                     undo=document.getElementById(selid[i]);
                     undo.classList.remove(selboxes[i]);
-                    // Se é de dúas letras
-                    if(undo.textContent.length===2){
-                        undo.style.background='linear-gradient(white,white)';
-                    // Se é de unha soa letra
-                    }else{
-                        undo.style.background='white';
-                    }
-                    // Eliminar letras das caixas
+                    undo.removeAttribute('style');
                     undo.textContent="";
-                    checking=false;
                 }
+                checking=false;
             },1000);
         // Se son iguais
         }else{
