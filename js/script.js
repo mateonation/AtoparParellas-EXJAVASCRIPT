@@ -7,7 +7,7 @@ let e;
 let attempts;
 let tofind;
 const abc=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-const colored=['#ff0000','#ffa500','#ffff00','#adff2f','#52ffdc','#0067e6','#a200ff','#00f55e','#f55200','#e51077','#6510e5','#dedede','#76a71b','#b30062','#1b00b3','#c9b30d','#1bb6bb','#00d1a0','#8a4500','#d24141','#d96dc9','#9c5bb9','#88c8c6','#0a3e6b','#7c950e','#f4f9a4']
+const colored=['#ff0000','#ffa500','#ffff00','#adff2f','#52ffdc','#0067e6','#a200ff','#00f55e','#f55200','#e51077','#6510e5','#a1a1a1','#76a71b','#b30062','#1b00b3','#c9b30d','#1bb6bb','#f4b3ff','#8a4500','#d24141','#d96dc9','#9c5bb9','#88c8c6','#0a3e6b','#7c950e','#f4f9a4']
 let index=[];
 let shuffled=[];
 let letter1st;
