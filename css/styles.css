@@ -15,20 +15,18 @@ body{
 .main-container{
     display:flex;
     flex-direction:column;
-    background-color:red;
     width:max-content;
 }
 .title{
     background-color:green;
+    text-align:center;
+    font-size:xx-large;
+    font-weight:500;
 }
 .game-container{
     display:flex;
     flex-direction:row;
     background-color:blue;
-}
-.boxesandattempts-container{
-    background-color: yellow;
-    padding: 20px;
 }
 .boxes{
     display:grid;
