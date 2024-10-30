@@ -23,7 +23,9 @@ window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
     total=12;
     document.getElementById('columns-n').value=4;
+    document.getElementById('columns-n').readOnly=true;
     document.getElementById('rows-n').value=3;
+    document.getElementById('rows-n').readOnly=true;
     document.getElementById('easy').checked=true;
     document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat(4,auto)';
     document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat(3,auto)';
@@ -252,5 +254,14 @@ function checkboxChecker(clicked){
         if(checkboxes[i]!==actual){
             checkboxes[i].checked=false;
         }
+    }
+    if(custom.checked===true){
+        // Se a dificuldade 'custom' é seleccionada posibilizar a modificación dos inputs para columnas e filas
+        document.getElementById('columns-n').readOnly=false;
+        document.getElementById('rows-n').readOnly=false;
+    }else{
+        // Se a dificuldade 'custom' non é seleccionada modificar os inputs a só lectura
+        document.getElementById('columns-n').readOnly=true;
+        document.getElementById('rows-n').readOnly=true;
     }
 }
