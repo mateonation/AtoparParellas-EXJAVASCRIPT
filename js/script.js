@@ -18,10 +18,13 @@ let rowsn;
 let columnsn;
 let grad1;
 let grad2;
-let color0;
 
 window.onload=function(){
+    // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
     total=12;
+    document.getElementById('columns-n').value=4;
+    document.getElementById('rows-n').value=3;
+    document.getElementById('easy').checked=true;
     document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat(4,auto)';
     document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat(3,auto)';
     generateBoxes();
@@ -159,6 +162,7 @@ function attext(){
 }
 // Cambiar o número de columnas e filas do xogo
 function selectRC(){
+    // Ler valores dos inputs
     rowsn=document.getElementById('rows-n').value;
     columnsn=document.getElementById('columns-n').value;
     // Obter o número provisional das caixas
