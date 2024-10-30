@@ -263,5 +263,21 @@ function checkboxChecker(clicked){
         // Se a dificuldade 'custom' non é seleccionada modificar os inputs a só lectura
         document.getElementById('columns-n').readOnly=true;
         document.getElementById('rows-n').readOnly=true;
+        // Dificuldades
+        if(easy.checked===true){
+            // Fácil
+            document.getElementById('columns-n').value=4;
+            document.getElementById('rows-n').value=3;
+        }
+        if(medium.checked===true){
+            // Medio
+            document.getElementById('columns-n').value=5;
+            document.getElementById('rows-n').value=4;
+        }
+        if(hard.checked===true){
+            // Difícil
+            document.getElementById('columns-n').value=6;
+            document.getElementById('rows-n').value=6;
+        }
     }
 }
