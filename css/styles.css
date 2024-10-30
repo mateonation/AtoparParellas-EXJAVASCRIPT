@@ -57,6 +57,16 @@ body{
     border: 4px solid #ffd000;
     box-shadow:1px ;
 }
+.attemptsandtimer-container{
+    display:flex;
+    flex-flow:row;
+}
+.timer{
+    padding:20px;
+    text-align:center;
+    margin-left:auto;
+    font-weight:700;
+}
 .attempts{
     padding:20px;
     white-space:pre-wrap;
