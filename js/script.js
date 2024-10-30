@@ -24,6 +24,12 @@ let hard=document.getElementById('hard');
 let custom=document.getElementById('custom');
 let checkboxes=[easy,medium,hard,custom];
 const diffnames=['fácil','medio','difícil','personalizado'];
+let span=document.querySelector('span');
+var timestart;
+var interval;
+let milliseconds;
+let seconds;
+let minutes;
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -48,6 +54,7 @@ window.onload=function(){
 
 // Xerador de caixas dentro do xogo
 function generateBoxes(){
+    timestart=true;
     letter1st=0;
     letter2nd=0;
     // Engadir tantos ID ao índice coma sexa posíbel (ata a metade das caixas totais)
@@ -86,12 +93,23 @@ function generateBoxes(){
     checking=false;
     // xerar texto de intentos acumulados + parellas restantes
     attext();
+    // parar e xerar timer
+    clearInterval(interval)
+    minutes=0;
+    seconds=0;
+    milliseconds=0;
+    span.textContent='00:00'
 }
 
 // Cando se clica enriba dunha caixa
 function selectBox(){
     if(checking){
         return;
+    }
+    // Inicializar timer se a primeira caixa é seleccionada
+    if(timestart){
+        interval=setInterval(timer, 1000);
+        timestart=false;
     }
     // Ler caixa que foi clicada
     let selected=document.getElementById(this.id);
@@ -286,4 +304,9 @@ function checkboxChecker(clicked){
             document.getElementById('rows-n').value=6;
         }
     }
+}
+// Timer para gardar tempo de xogo
+function timer(){
+    seconds++;
+    span.textContent=minutes+':'+seconds;
 }
