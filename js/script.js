@@ -308,5 +308,18 @@ function checkboxChecker(clicked){
 // Timer para gardar tempo de xogo
 function timer(){
     seconds++;
-    span.textContent=minutes+':'+seconds;
+    if(seconds===60){
+        minutes++;
+        seconds=0
+    }
+    if(seconds<10&&minutes<10){
+        span.textContent='0'+minutes+':0'+seconds;
+    }else if(seconds<10&&minutes>10){
+        span.textContent=minutes+':0'+seconds;
+    }else if(seconds>=10&&minutes<10){
+        span.textContent='0'+minutes+':'+seconds;
+    }else{
+        span.textContent=minutes+':'+seconds;
+    }
+
 }
