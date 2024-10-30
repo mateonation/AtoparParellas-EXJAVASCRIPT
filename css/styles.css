@@ -83,3 +83,11 @@ body{
 #select-n{
     float:right;
 }
+input{
+    background-color: white;
+    border:1px solid black;
+    transition:0.2s;
+}
+input:read-only{
+    background-color: #ececec;
+}
