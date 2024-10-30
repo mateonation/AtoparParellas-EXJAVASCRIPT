@@ -245,7 +245,8 @@ function checkboxChecker(clicked){
     let easy=document.getElementById('easy');
     let medium=document.getElementById('medium');
     let hard=document.getElementById('hard');
-    let checkboxes=[easy,medium,hard];
+    let custom=document.getElementById('custom');
+    let checkboxes=[easy,medium,hard,custom];
     // Desmarcar as dificuldades que non son a seleccionada
     for(i=0;i<checkboxes.length;i++){
         if(checkboxes[i]!==actual){
