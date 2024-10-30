@@ -18,6 +18,12 @@ let rowsn;
 let columnsn;
 let grad1;
 let grad2;
+let easy=document.getElementById('easy');
+let medium=document.getElementById('medium');
+let hard=document.getElementById('hard');
+let custom=document.getElementById('custom');
+let checkboxes=[easy,medium,hard,custom];
+const diffnames=['fácil','medio','difícil','personalizado'];
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -206,6 +212,12 @@ function staText(){
     if(statVal){
         text.style.color='green';
         text.textContent='Xerando '+total+' caixas';
+        // Amosar dificuldade seleccionada
+        for(i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked===true){
+                text.textContent+='\n('+diffnames[i]+')'
+            }
+        }
     // Amosar texto de xeración co erro    
     }else{
         text.style.color='red';
@@ -243,12 +255,6 @@ function staText(){
 function checkboxChecker(clicked){
     // Ler a dificuldade clicada
     let actual=document.getElementById(clicked);
-    // Ler todas as dificuldades
-    let easy=document.getElementById('easy');
-    let medium=document.getElementById('medium');
-    let hard=document.getElementById('hard');
-    let custom=document.getElementById('custom');
-    let checkboxes=[easy,medium,hard,custom];
     // Desmarcar as dificuldades que non son a seleccionada
     for(i=0;i<checkboxes.length;i++){
         if(checkboxes[i]!==actual){
