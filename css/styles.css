@@ -75,6 +75,10 @@ body{
         margin-top: 40px;
         height:4px;
     }
+    ul{
+        list-style-type:none;
+        padding:0;
+    }
 }
 #select-n{
     float:right;
