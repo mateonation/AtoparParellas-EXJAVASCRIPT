@@ -237,3 +237,19 @@ function staText(){
         text.textContent='';
     },2500)
 }
+// Selección da dificuldade do xogo
+function checkboxChecker(clicked){
+    // Ler a dificuldade clicada
+    let actual=document.getElementById(clicked);
+    // Ler todas as dificuldades
+    let easy=document.getElementById('easy');
+    let medium=document.getElementById('medium');
+    let hard=document.getElementById('hard');
+    let checkboxes=[easy,medium,hard];
+    // Desmarcar as dificuldades que non son a seleccionada
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i]!==actual){
+            checkboxes[i].checked=false;
+        }
+    }
+}
