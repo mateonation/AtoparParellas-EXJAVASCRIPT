@@ -22,14 +22,20 @@
                 <div class="difficulty">
                     Dificultade
                     <ul>
-                        <li>Fácil</li>
-                        <li>Medio</li>
-                        <li>Difícil</li>
+                        <li><label for="easy">
+                            <input type="checkbox" id="easy" checked="checked">Fácil
+                        </label></li>
+                        <li><label for="medium">
+                            <input type="checkbox" id="medium">Medio
+                        </label></li>
+                        <li><label for="hard">
+                            <input type="checkbox" id="hard">Difícil
+                        </label></li>
                     </ul>
                     <div id="slct">
-                        <label for="rows-n">Filas:</label>
+                        <label for="rows-n">Filas</label>
                         <input type="number" id="rows-n">
-                        <label for="columns-n">Columnas:</label>
+                        <label for="columns-n">Columnas</label>
                         <input type="number" id="columns-n">
                     </div>
                     <button id="select-n" onclick="selectRC();">Seleccionar</button>
