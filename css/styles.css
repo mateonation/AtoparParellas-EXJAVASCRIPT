@@ -53,9 +53,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.matched{
+.matched,.activated{
     border: 4px solid #ffd000;
-    box-shadow:1px ;
 }
 .attemptsandtimer-container{
     display:flex;
@@ -67,6 +66,12 @@ body{
     margin-left:auto;
     font-weight:1000;
     width:100px;
+
+    display: flex;
+    flex-flow:column;
+    justify-content: center;
+    align-items: center;
+
     div{
         width:100%;
         font-size:20px;
@@ -75,6 +80,40 @@ body{
 .attempts{
     padding:20px;
     white-space:pre-wrap;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sizing{
+    padding:20px;
+    text-align: center;
+    margin-left: auto;
+    display:flex;
+    flex-flow:column;
+    div{
+        display:flex;
+        flex-flow:row;
+        gap:10px;
+    }
+    .sizesel{
+        background:white;
+        height:30px;
+        width:30px;
+        border: 2px solid black;
+        border-radius:10px;
+        transition:0.5s;
+
+        display: flex;
+        text-transform:uppercase;
+        font-size:15px;
+        color:black;
+        justify-content: center;
+        align-items: center;
+    }
+    .sizesel:hover{
+        background:#fff281;
+    }
 }
 .difficulty{
     padding:20px;
