@@ -1,5 +1,6 @@
 let total;
 var checking;
+var gameover;
 let boxes=[];
 let selboxes=[];
 let selid=[];
@@ -24,6 +25,7 @@ let hard=document.getElementById('hard');
 let custom=document.getElementById('custom');
 let checkboxes=[easy,medium,hard,custom];
 const diffnames=['fácil','medio','difícil','personalizado'];
+let diff;
 let mintxt=document.getElementById('min');
 let sectxt=document.getElementById('sec');
 let miltxt=document.getElementById('mil');
@@ -56,6 +58,7 @@ window.onload=function(){
 
 // Xerador de caixas dentro do xogo
 function generateBoxes(){
+    diff='';
     timestart=true;
     letter1st=0;
     letter2nd=0;
@@ -85,6 +88,13 @@ function generateBoxes(){
         boxes.push(div);
         document.querySelector('.boxes').append(boxes[i]);
     }
+    // Gardar nome da dificuldade ao xerar caixas e poñer maiúscula á primeira letra
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].checked===true){
+            diff=diffnames[i].toString();
+            diff=diff.charAt(0).toUpperCase()+diff.slice(1);
+        }
+    }
     // probas
     e=0;
     // nº de intentos totais
@@ -96,7 +106,7 @@ function generateBoxes(){
     // xerar texto de intentos acumulados + parellas restantes
     attext();
     // parar e xerar timer
-    clearInterval(interval)
+    clearInterval(interval);
     minutes=0;
     seconds=0;
     milliseconds=0;
@@ -107,7 +117,8 @@ function generateBoxes(){
 
 // Cando se clica enriba dunha caixa
 function selectBox(){
-    if(checking){
+    // Se está verificando as caixas ou a partida xa rematou
+    if(checking || gameover){
         return;
     }
     // Inicializar timer se a primeira caixa é seleccionada cun intervalo de 100 milisegundos
@@ -172,6 +183,11 @@ function selectBox(){
             checking=false;
         }
         e=0;
+        if(tofind===0){
+            gameover=true;
+            clearInterval(interval);
+            staText();
+        }
         attext();
         return;
     }
@@ -192,6 +208,8 @@ function attext(){
 }
 // Cambiar o número de columnas e filas do xogo
 function selectRC(){
+    // Partida finalizada a falso
+    gameover=false;
     // Ler valores dos inputs
     rowsn=document.getElementById('rows-n').value;
     columnsn=document.getElementById('columns-n').value;
@@ -216,8 +234,8 @@ function selectRC(){
         document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat('+rowsn+',auto)';
         // Volver a xerar as caixas cos novos parámetros
         statVal=true;
-        staText();
         generateBoxes();
+        staText();
         return;
     // Se é impar ou menor que 1 => amosar erro e non xerar    
     }else{
@@ -230,16 +248,16 @@ function selectRC(){
 function staText(){
     let text=document.getElementById('state');
     text.style.whiteSpace='pre-wrap';
+    // Amosar texto de victoria
+    if(gameover){
+        text.style.color='#ffd000';
+        text.textContent='¡Parabéns! Atopaches todas as parellas :^)\n \n'+diff+'\n'+attempts+' intentos\n'+minutes+' minutos\n'+seconds+' segundos\n'+milliseconds+' milisegundos';
+        return;
+    }
     // Amosar texto de xeración boa
     if(statVal){
         text.style.color='green';
-        text.textContent='Xerando '+total+' caixas';
-        // Amosar dificuldade seleccionada
-        for(i=0;i<checkboxes.length;i++){
-            if(checkboxes[i].checked===true){
-                text.textContent+='\n('+diffnames[i]+')'
-            }
-        }
+        text.textContent='Xerando '+total+' caixas\n('+diff+')';
     // Amosar texto de xeración co erro    
     }else{
         text.style.color='red';
