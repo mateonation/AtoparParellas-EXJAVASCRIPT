@@ -34,6 +34,9 @@ var interval;
 let milliseconds;
 let seconds;
 let minutes;
+let sizeS=document.getElementById('S');
+let sizeM=document.getElementById('M');
+let sizeL=document.getElementById('L');
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
