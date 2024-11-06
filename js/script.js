@@ -24,13 +24,14 @@ let hard=document.getElementById('hard');
 let custom=document.getElementById('custom');
 let checkboxes=[easy,medium,hard,custom];
 const diffnames=['fácil','medio','difícil','personalizado'];
-let span=document.querySelector('span');
+let mintxt=document.getElementById('min');
+let sectxt=document.getElementById('sec');
+let miltxt=document.getElementById('mil');
 var timestart;
 var interval;
 let milliseconds;
 let seconds;
 let minutes;
-let timetxt;
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -99,7 +100,9 @@ function generateBoxes(){
     minutes=0;
     seconds=0;
     milliseconds=0;
-    span.textContent='00:00:0';
+    mintxt.textContent='00';
+    sectxt.textContent='00';
+    miltxt.textContent='0';
 }
 
 // Cando se clica enriba dunha caixa
@@ -319,32 +322,20 @@ function timer(){
         minutes++;
         seconds=0;
     }
-
-    // IMPRIMIR TEXTO A PARTIR DE ESTE PUNTO
-    timetxt='';
-
-    // Se o minuto é un número de 2 cifras ou máis=> Gardarlo na plantilla do texto do timer
+    // Imprimir milisegundo na pantalla
+    miltxt.textContent=milliseconds;
+    // Se o minuto é un número de 2 cifras ou máis=> Imprimilo na pantalla
     if(minutes.toString().length>=2){
-        timetxt=minutes;
-    // Se o minuto é un número dunha soa cifra=> Gardarlo na plantilla do texto xunto cun 0
+        mintxt.textContent=minutes;
+    // Se o minuto é un número dunha soa cifra=> Imprimilo cun 0 antes
     }else{
-        timetxt='0';
-        timetxt+=minutes;
+        mintxt.textContent='0'+minutes;
     }
-    // Sumarlle dous puntos despóis do minuto
-    timetxt+=':'
-    // Se o segundo é un número de 2 cifras ou máis=> Gardarlo na plantilla do texto do timer
+    // Se o segundo é un número de 2 cifras ou máis=> Imprimilo na pantalla
     if(seconds.toString().length>=2){
-        timetxt+=seconds;
-    // Se o segundo é un número dunha soa cifra=> Gardarlo na plantilla do texto xunto cun 0
+        sectxt.textContent=seconds;
+    // Se o segundo é un número dunha soa cifra=> Imprimilo cun 0 antes
     }else{
-        timetxt+='0';
-        timetxt+=seconds;
+        sectxt.textContent='0'+seconds;
     }
-    // Sumarlle dous puntos despóis do segundo
-    timetxt+=':'
-    // Gardar o milisegundo na plantilla do texto do timer
-    timetxt+=milliseconds;
-    // IMPRIMIR TEXTO NA PANTALLA
-    span.textContent=timetxt;
 }

@@ -65,7 +65,12 @@ body{
     padding:20px;
     text-align:center;
     margin-left:auto;
-    font-weight:700;
+    font-weight:1000;
+    width:100px;
+    div{
+        width:100%;
+        font-size:20px;
+    }
 }
 .attempts{
     padding:20px;
