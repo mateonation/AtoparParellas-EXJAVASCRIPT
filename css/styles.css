@@ -55,6 +55,7 @@ body{
 }
 .matched,.activated{
     border: 4px solid #ffd000;
+    color:#ffd000;
 }
 .attemptsandtimer-container{
     display:flex;
