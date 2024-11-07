@@ -48,6 +48,9 @@ window.onload=function(){
     document.getElementById('rows-n').value=3;
     document.getElementById('rows-n').readOnly=true;
     document.getElementById('easy').checked=true;
+    // Poñer o tamaño L por defecto
+    sizeL.classList.add('activated');
+
     document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat(4,auto)';
     document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat(3,auto)';
     generateBoxes();
@@ -88,6 +91,8 @@ function generateBoxes(){
     for(let i=0;i<total;i++){
         let div=document.createElement('div');
         div.classList.add('box');
+        // Poñer o tamaño seleccionado ás caixas
+        div.classList.add(document.getElementsByClassName('activated')[0].textContent);
         div.addEventListener('click',selectBox);
         div.id=i;
         boxes.push(div);
@@ -362,14 +367,23 @@ function timer(){
 }
 // Cambiar tamaño das caixas
 function sizeSelect(clicked){
-    // Ler a dificuldade clicada
+    // Ler o tamaño clicado
     let actual=document.getElementById(clicked);
-    // Desmarcar as dificuldades que non son a seleccionada
+    // Desmarcar os tamaños que non foron seleccionados
     for(i=0;i<sizeboxes.length;i++){
         if(sizeboxes[i]===actual){
             sizeboxes[i].classList.add('activated');
         }else{
             sizeboxes[i].classList.remove('activated');
+        }
+    }
+    // Cambiar todo o tamaño das caixas
+    for(i=0;i<boxes.length;i++){
+        let sizechange=document.getElementById(i);
+        for(x=0;x<sizenames.length;x++){
+            if(sizechange.classList.item(1)===sizenames[x]){
+                sizechange.classList.replace(sizenames[x],clicked);
+            }
         }
     }
 }
