@@ -167,15 +167,60 @@ body{
         list-style-type:none;
         padding:0;
     }
+    label{
+        display:flex;
+        vertical-align: center;
+        padding:3px;
+    }
 }
 #select-n{
     float:right;
 }
 input{
-    background-color: white;
     border:1px solid black;
     transition:0.2s;
 }
 input:read-only{
     background-color: #ececec;
+}
+input[type="checkbox"]{
+    margin:0;
+    margin-right:3px;
+    border:2px solid black;
+    border-radius: 5px;
+    appearance:none;
+    height:20px;
+    width:20px;
+}
+#easy:hover{
+    background:#ccfffb;
+    border-color:#61cac1;
+}
+#easy:checked{
+    background:#00ffea;
+    border-color:#007e73;
+}
+#medium:hover{
+    background:#fffabb;
+    border-color:#c0d467;
+}
+#medium:checked{
+    background:#ffee00;
+    border-color:#887f00;
+}
+#hard:hover{
+    background:#ffc2c2;
+    border-color:#d47d67;
+}
+#hard:checked{
+    background:#ff0000;
+    border-color:#7c0000;
+}
+#custom:hover{
+    background:#f9c8ff;
+    border-color:#9f67d4;
+}
+#custom:checked{
+    background:#e100ff;
+    border-color:#680075;
 }
