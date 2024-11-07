@@ -155,7 +155,7 @@ function selectBox(){
                 grad2=colored[i];
             }
             if(grad1!==0 && grad2!==0){
-                selected.style.background='linear-gradient(45deg,'+grad1+','+grad2+')';
+                selected.style.background='linear-gradient(45deg,'+grad1+' 50%,'+grad2+' 50%)';
             }
         }
         // Colorear para caixas dunha soa letra
