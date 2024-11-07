@@ -48,8 +48,8 @@ window.onload=function(){
     document.getElementById('rows-n').value=3;
     document.getElementById('rows-n').readOnly=true;
     document.getElementById('easy').checked=true;
-    // Poñer o tamaño L por defecto
-    sizeL.classList.add('activated');
+    // Poñer o tamaño M por defecto
+    sizeM.classList.add('activated');
 
     document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat(4,auto)';
     document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat(3,auto)';
