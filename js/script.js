@@ -37,6 +37,8 @@ let minutes;
 let sizeS=document.getElementById('S');
 let sizeM=document.getElementById('M');
 let sizeL=document.getElementById('L');
+let sizeboxes=[sizeS,sizeM,sizeL];
+const sizenames=['S','M','L'];
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -132,11 +134,10 @@ function selectBox(){
     // Ler caixa que foi clicada
     let selected=document.getElementById(this.id);
     // Verificar se xa foi clicada previamente
-    if(selected.classList!='box'){
+    if(selected.textContent!=''){
         return;
     }
     // Marcar a caixa
-    selected.classList.add(shuffled[this.id]);
     selected.textContent=(shuffled[this.id]);
     for(i=0;i<total;i++){
         // Colorear caixas de dúas letras
@@ -158,7 +159,7 @@ function selectBox(){
         }
     }
     // Engadilo a un array de caixas seleccionadas
-    selboxes[e]=selected.classList.item(1);
+    selboxes[e]=selected.textContent;
     selid[e]=this.id;
     // Sumar un intento
     e++;
@@ -170,9 +171,8 @@ function selectBox(){
                 for(i=0;i<selboxes.length;i++){
                     // Desmarcar caixas 
                     undo=document.getElementById(selid[i]);
-                    undo.classList.remove(selboxes[i]);
-                    undo.removeAttribute('style');
                     undo.textContent="";
+                    undo.removeAttribute('style');
                 }
                 checking=false;
             },1000);
@@ -358,5 +358,18 @@ function timer(){
     // Se o segundo é un número dunha soa cifra=> Imprimilo cun 0 antes
     }else{
         sectxt.textContent='0'+seconds;
+    }
+}
+// Cambiar tamaño das caixas
+function sizeSelect(clicked){
+    // Ler a dificuldade clicada
+    let actual=document.getElementById(clicked);
+    // Desmarcar as dificuldades que non son a seleccionada
+    for(i=0;i<sizeboxes.length;i++){
+        if(sizeboxes[i]===actual){
+            sizeboxes[i].classList.add('activated');
+        }else{
+            sizeboxes[i].classList.remove('activated');
+        }
     }
 }
