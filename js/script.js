@@ -225,7 +225,7 @@ function selectRC(){
     // Obter o número provisional das caixas
     totaln=rowsn*columnsn;
     // Se o total provisional é par + maior que 1 + menor/igual ca os número máximo de letras xerábels + numeros de columnas e filas positivos
-    if(totaln%2===0 && totaln>1 && totaln<=(abc.length+1)*abc.length && columnsn>0 && rowsn>0){
+    if(totaln%2===0 && totaln>1 && totaln<=(abc.length*(abc.length+1))*2 && columnsn>0 && rowsn>0){
         // Desmarcar e borrar todas as caixas reveladas
         for(i=0;i<total;i++){
             let del=document.getElementById(i);
@@ -284,16 +284,16 @@ function staText(){
             text.textContent+='filas negativas ('+rowsn+')';
         }
         // Caixas totais a 0, negativas, impares ou maiores ca o número máximo de letras xerábels
-        if(totaln<=0||totaln%2!==0||(abc.length+1)*abc.length){
+        if(totaln<=0||totaln%2!==0||totaln>(abc.length*(abc.length+1))*2){
             if(text.textContent!='-'){
                 text.textContent+='\n-';
             }
             if(totaln<=0){
                 // Caixas totais negativas
                 text.textContent+='caixas totais negativas ('+totaln+')';
-            }else if(totaln>(abc.length+1)*abc.length){
+            }else if(totaln>(abc.length*(abc.length+1))*2){
                 // Caixas totais maiores ca o número máximo de letras xerábels
-                text.textContent+='caixas totais maiores a '+(abc.length+1)*abc.length;
+                text.textContent+='límite excedido (>'+(abc.length*(abc.length+1))*2+')';
             }else{
                 // Caixas totais impares
                 text.textContent+='caixas totais impares ('+totaln+')';
@@ -401,8 +401,8 @@ function giveUp(){
     if(confirm('Quédanche '+tofind+' parellas por atopar\nSeguro que queres rendirte e revelar todas as caixas?')){
         giveup=true;
         // Parar timer
+        timestart=false;
         clearInterval(interval);
-        // Sí
         for(i=0;i<boxes.length;i++){
             let reveal=document.getElementById(i);
             reveal.textContent=shuffled[i];
