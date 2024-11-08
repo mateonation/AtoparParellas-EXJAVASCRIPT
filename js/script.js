@@ -320,6 +320,8 @@ function checkboxChecker(clicked){
     for(i=0;i<checkboxes.length;i++){
         if(checkboxes[i]!==actual){
             checkboxes[i].checked=false;
+        }else{
+            checkboxes[i].checked=true;
         }
     }
     if(custom.checked===true){
