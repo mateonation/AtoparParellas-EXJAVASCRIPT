@@ -3,6 +3,7 @@
 }
 html{
     height:100vh;
+    background-image:url('../img/background/lines-background-0oce7fbzkt5tr7nc.jpg');
 }
 body{
     font-family:'Outfit';
@@ -10,7 +11,7 @@ body{
     padding:0px;
     height:100%;
     align-content:center;
-    justify-items: center;
+    justify-items:center;
 }
 .main-container{
     display:flex;
@@ -18,11 +19,13 @@ body{
     width:max-content;
     border:4px solid black;
     border-radius: 2em;
+    background:white;
 }
 .title{
     text-align:center;
     font-size:xx-large;
     font-weight:500;
+    padding:15px;
 }
 .game-container{
     display:flex;
@@ -36,7 +39,6 @@ body{
     padding:20px;
 }
 .box{
-    
     margin:0.5rem;
     position:relative;
     background:white;
