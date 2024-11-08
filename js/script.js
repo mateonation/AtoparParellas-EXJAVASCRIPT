@@ -43,6 +43,8 @@ var giveup;
 var pop=new Audio('../fx/pop.mp3');
 var correct=new Audio('../fx/correct.mp3');
 var wrong=new Audio('../fx/wrong.mp3');
+var sizefx=new Audio('../fx/size.mp3');
+var victory=new Audio('../fx/victory.mp3');
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -193,12 +195,15 @@ function selectBox(){
                 undo=document.getElementById(selid[i]);
                 undo.classList.add('matched');
             }
-            correct.play();
             tofind=tofind-1;
+            if(tofind!==0){
+                correct.play();
+            }
             checking=false;
         }
         e=0;
         if(tofind===0){
+            victory.play();
             gameover=true;
             clearInterval(interval);
             staText();
@@ -250,6 +255,7 @@ function selectRC(){
         document.getElementsByClassName('boxes')[0].style.gridTemplateColumns='repeat('+columnsn+',auto)';
         document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat('+rowsn+',auto)';
         // Volver a xerar as caixas cos novos parámetros
+        correct.play();
         statVal=true;
         giveup=false;
         generateBoxes();
@@ -257,6 +263,7 @@ function selectRC(){
         return;
     // Se é impar ou menor que 1 => amosar erro e non xerar    
     }else{
+        wrong.play();
         statVal=false;
         staText();
         return;
@@ -401,6 +408,7 @@ function sizeSelect(clicked){
             }
         }
     }
+    sizefx.play();
 }
 // Rendirse e revelar todas as caixas do xogo
 function giveUp(){
