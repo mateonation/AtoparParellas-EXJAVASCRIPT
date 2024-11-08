@@ -182,26 +182,40 @@ body{
         padding:3px;
     }
 }
+button,input{
+    height:25px;
+    img{
+        height:20px;
+        width:auto;
+    }
+}
 #select-n{
     float:right;
     appearance:none;
     background-color:white;
     border:2px solid black;
     border-radius: 5px;
-    height:25px;
     width:auto;
     transition:0.5s
+}
+#reveal{
+    float:left;
+    appearance:none;
+    border:none;
+    background:none;
 }
 #select-n:hover{
     border-color:#587255;
     color:#587255;
     background-color: #caffe0;
 }
+#reveal:hover{
+    background: radial-gradient(closest-side,#00ff2a, transparent);
+}
 input{
     border:2px solid black;
     border-radius: 5px;
     transition:0.2s;
-    height:25px;
 }
 input:read-only{
     border-color:#707070;
