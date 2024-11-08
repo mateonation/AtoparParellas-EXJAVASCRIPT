@@ -223,8 +223,8 @@ function selectRC(){
     columnsn=document.getElementById('columns-n').value;
     // Obter o número provisional das caixas
     totaln=rowsn*columnsn;
-    // Se o total provisional é par + maior que 1 + numeros de columnas e filas positivos
-    if(totaln%2===0 && totaln>1 && columnsn>0 && rowsn>0){
+    // Se o total provisional é par + maior que 1 + menor/igual ca os número máximo de letras xerábels + numeros de columnas e filas positivos
+    if(totaln%2===0 && totaln>1 && totaln<=(abc.length+1)*abc.length && columnsn>0 && rowsn>0){
         // Desmarcar e borrar todas as caixas reveladas
         for(i=0;i<total;i++){
             let del=document.getElementById(i);
@@ -281,14 +281,17 @@ function staText(){
             }
             text.textContent+='filas negativas ('+rowsn+')';
         }
-        // Caixas totais a 0, negativas ou impares
-        if(totaln<=0||totaln%2!==0){
+        // Caixas totais a 0, negativas, impares ou maiores ca o número máximo de letras xerábels
+        if(totaln<=0||totaln%2!==0||(abc.length+1)*abc.length){
             if(text.textContent!='-'){
                 text.textContent+='\n-';
             }
             if(totaln<=0){
                 // Caixas totais negativas
                 text.textContent+='caixas totais negativas ('+totaln+')';
+            }else if(totaln>(abc.length+1)*abc.length){
+                // Caixas totais maiores ca o número máximo de letras xerábels
+                text.textContent+='caixas totais maiores a '+(abc.length+1)*abc.length;
             }else{
                 // Caixas totais impares
                 text.textContent+='caixas totais impares ('+totaln+')';
