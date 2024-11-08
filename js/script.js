@@ -39,8 +39,11 @@ let sizeM=document.getElementById('M');
 let sizeL=document.getElementById('L');
 let sizeboxes=[sizeS,sizeM,sizeL];
 const sizenames=['S','M','L'];
+var giveup;
+let giveupbutton=document.getElementById('reveal');
 
 window.onload=function(){
+    giveup=false;
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
     total=12;
     document.getElementById('columns-n').value=4;
@@ -242,6 +245,7 @@ function selectRC(){
         document.getElementsByClassName('boxes')[0].style.gridTemplateRows='repeat('+rowsn+',auto)';
         // Volver a xerar as caixas cos novos parámetros
         statVal=true;
+        giveup=false;
         generateBoxes();
         staText();
         return;
@@ -388,5 +392,16 @@ function sizeSelect(clicked){
                 sizechange.classList.replace(sizenames[x],clicked);
             }
         }
+    }
+}
+// Rendirse e revelar todas as caixas do xogo
+function giveUp(){
+    // Alerta con opcións sí ou non
+    if(confirm('ALERT WITH "YES" AND "NO" OPTIONS')){
+        // Sí
+        alert('"YES" WAS SELECTED');
+    }else{
+        // Non
+        alert('"NO" WAS SELECTED');
     }
 }
