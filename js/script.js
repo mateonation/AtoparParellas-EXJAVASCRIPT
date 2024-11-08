@@ -40,6 +40,9 @@ let sizeL=document.getElementById('L');
 let sizeboxes=[sizeS,sizeM,sizeL];
 const sizenames=['S','M','L'];
 var giveup;
+var pop=new Audio('../fx/pop.mp3');
+var correct=new Audio('../fx/correct.mp3');
+var wrong=new Audio('../fx/wrong.mp3');
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -145,6 +148,7 @@ function selectBox(){
     }
     // Marcar a caixa
     selected.textContent=(shuffled[this.id]);
+    
     for(i=0;i<total;i++){
         // Colorear caixas de dúas letras
         if(selected.textContent.length===2){
@@ -182,12 +186,14 @@ function selectBox(){
                 }
                 checking=false;
             },1000);
+            wrong.play();
         // Se son iguais
         }else{
             for(i=0;i<selboxes.length;i++){
                 undo=document.getElementById(selid[i]);
                 undo.classList.add('matched');
             }
+            correct.play();
             tofind=tofind-1;
             checking=false;
         }
@@ -199,6 +205,8 @@ function selectBox(){
         }
         attext();
         return;
+    }else{
+        pop.play();
     }
 }
 // Se duas caixas xa foron clicadas verificar se hai unha parella + marcar o checking á true + sumar un intento
