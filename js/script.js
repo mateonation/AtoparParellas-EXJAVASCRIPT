@@ -40,10 +40,8 @@ let sizeL=document.getElementById('L');
 let sizeboxes=[sizeS,sizeM,sizeL];
 const sizenames=['S','M','L'];
 var giveup;
-let giveupbutton=document.getElementById('reveal');
 
 window.onload=function(){
-    giveup=false;
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
     total=12;
     document.getElementById('columns-n').value=4;
@@ -396,12 +394,38 @@ function sizeSelect(clicked){
 }
 // Rendirse e revelar todas as caixas do xogo
 function giveUp(){
+    if(giveup||gameover){
+        return;
+    }
     // Alerta con opcións sí ou non
-    if(confirm('ALERT WITH "YES" AND "NO" OPTIONS')){
+    if(confirm('Quédanche '+tofind+' parellas por atopar\nSeguro que queres rendirte e revelar todas as caixas?')){
+        giveup=true;
+        // Parar timer
+        clearInterval(interval);
         // Sí
-        alert('"YES" WAS SELECTED');
-    }else{
-        // Non
-        alert('"NO" WAS SELECTED');
+        for(i=0;i<boxes.length;i++){
+            let reveal=document.getElementById(i);
+            reveal.textContent=shuffled[i];
+            // Colorear caixa
+            for(x=0;x<total;x++){
+                // Colorear caixas de dúas letras
+                if(reveal.textContent.length===2){
+                    let position=reveal.textContent.split(''); // ['A','B'];
+                    if(position[0]===abc[x]){
+                        grad1=colored[x];
+                    }
+                    if(position[1]===abc[x]){
+                        grad2=colored[x];
+                    }
+                    if(grad1!==0 && grad2!==0){
+                        reveal.style.background='linear-gradient(45deg,'+grad1+' 50%,'+grad2+' 50%)';
+                    }
+                }
+                // Colorear para caixas dunha soa letra
+                if(reveal.textContent===abc[x]){
+                    reveal.style.background=colored[x];
+                }
+            }
+        }
     }
 }
