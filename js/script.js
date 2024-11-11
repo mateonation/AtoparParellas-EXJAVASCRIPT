@@ -24,7 +24,9 @@ let medium=document.getElementById('medium');
 let hard=document.getElementById('hard');
 let custom=document.getElementById('custom');
 let checkboxes=[easy,medium,hard,custom];
+const diffnames_og=['easy','medium','hard','custom'];
 const diffnames=['fácil','medio','difícil','personalizado'];
+let diffcount;
 let diff;
 let mintxt=document.getElementById('min');
 let sectxt=document.getElementById('sec');
@@ -45,6 +47,8 @@ var correct=new Audio('../fx/correct.mp3');
 var wrong=new Audio('../fx/wrong.mp3');
 var sizefx=new Audio('../fx/size.mp3');
 var victory=new Audio('../fx/victory.mp3');
+let text=document.getElementById('state');
+var link=document.querySelector("link[rel~='icon']");
 
 window.onload=function(){
     // Ao abrir o xogo no navegador poñer o modo de xogo en fácil por defecto
@@ -109,8 +113,17 @@ function generateBoxes(){
         if(checkboxes[i].checked===true){
             diff=diffnames[i].toString();
             diff=diff.charAt(0).toUpperCase()+diff.slice(1);
+            // Gardar num da dificuldade
+            diffcount=i;
         }
     }
+    // Poñer o favicon (icona da pestaña) da dificuldade seleccionada
+    if(!link){
+            link=document.createElement('link');
+            link.rel='icon';
+            document.head.appendChild(link);
+    }
+    link.href='../img/favicon/'+diffnames_og[diffcount]+'.png';
     // probas
     e=0;
     // nº de intentos totais
@@ -271,7 +284,6 @@ function selectRC(){
 }
 // Texto de verificación do número de filas e columnas
 function staText(){
-    let text=document.getElementById('state');
     text.style.whiteSpace='pre-wrap';
     // Amosar texto de victoria
     if(gameover){
@@ -412,7 +424,7 @@ function sizeSelect(clicked){
 }
 // Rendirse e revelar todas as caixas do xogo
 function giveUp(){
-    if(giveup||gameover){
+    if(giveup||tofind===0){
         return;
     }
     // Alerta con opcións sí ou non
