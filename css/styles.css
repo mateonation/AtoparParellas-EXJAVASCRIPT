@@ -3,7 +3,13 @@
 }
 html{
     height:100vh;
-    background-image:url('../img/background/lines-background-0oce7fbzkt5tr7nc.jpg');
+    background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 10px,
+    #f3f3f3 10px,
+    #f3f3f3 20px
+);
 }
 body{
     font-family:'Outfit';
